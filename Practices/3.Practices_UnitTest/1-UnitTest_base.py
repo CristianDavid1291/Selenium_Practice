@@ -7,7 +7,7 @@ class base_test(unittest.TestCase):
 
     def setUp(self):
         self.driver = webdriver.Chrome(executable_path=".\Drivers\Chrome\chromedriver.exe")
-        self.driver.maximize_window()
+        
         
         #driver = webdriver.Firefox(executable_path=".\Drivers\Firefox\geckodriver.exe")
        
@@ -17,6 +17,7 @@ class base_test(unittest.TestCase):
     def test1(self):  
         driver = self.driver
         driver.get("")
+        self.driver.maximize_window()
         
 
     def tearDown(self):
