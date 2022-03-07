@@ -49,6 +49,30 @@ class Functions():
             print(ex.msg)
             print("Element not found" + xpath) 
 
+    def select_xpath_index(self,time2,xpath,index,time3): 
+
+        try:
+            val = WebDriverWait(self.driver, time2).until(EC.visibility_of_element_located((By.XPATH,xpath)))
+            self.driver.execute_script("arguments[0].scrollIntoView();", val)
+            val = Select(val)
+            val.select_by_index(index)
+            time.sleep(time3)
+        except TimeoutException as ex:
+            print(ex.msg)
+            print ("Select Element not found")
+
+    def check_xpath_multiple(self,time2,xpath):
+        vecElement = WebDriverWait(self.driver, time2).until(EC.visibility_of_all_elements_located((By.XPATH,xpath)))
+        
+        try:
+            for i in vecElement:
+                vecElement[i].click()
+                time.sleep(time2)
+        except TimeoutException as ex:
+           for i in vecElement:
+                print(ex.msg)
+                print ("Select Element not found:"+ str(i))    
+
        
 
 
