@@ -16,9 +16,10 @@ class base_test(unittest.TestCase):
     def test1(self):  
         driver = self.driver
         f = Functions(driver)
-        driver.get("https://www.saucedemo.com/") 
-        driver.maximize_window()
-        f.time(5)
+        f.navigate("https://www.saucedemo.com/")
+        f.time(1)
+        f.text_xpath_validate("//input[@id='user-name']","Cristian",1)
+        f.text_xpath_validate("//input[@id='password']","1234",2)
         
 
     def tearDown(self):

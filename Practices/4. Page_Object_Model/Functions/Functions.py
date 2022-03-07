@@ -13,9 +13,30 @@ class Functions():
         self.driver = driver
     
     def time(self,time2):
-        t = time.sleep(time2)
-        return t
+        time.sleep(time2)
+        
 
+    def navigate(self,path):
+      self.driver.get(path)
+      self.driver.maximize_window()
 
+    def text_xpath(self,xpath,text,time2):
+        val=self.driver.find_element_by_xpath(xpath)
+        val.clear()
+        val.send_keys(text)
+        time.sleep(time2)
+
+    def text_xpath_validate(self,xpath,text,time2):
+
+        try:
+            val = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH,xpath)))
+            val.clear()
+            val.send_keys(text)
+            time.sleep(time2)
+        except TimeoutException as ex:
+            print(ex.msg)
+            print("Element not found" + xpath)  
+
+       
 
 
