@@ -1,7 +1,7 @@
 import unittest
 from selenium import webdriver
 import time
-from Functions.Functions import Functions
+from Functions.Login_Page import Login_Page
 
 
 
@@ -14,12 +14,8 @@ class base_test(unittest.TestCase):
          
         
     def test1(self):  
-        driver = self.driver
-        f = Functions(driver)
-        f.navigate("https://www.saucedemo.com/")
-        f.time(1)
-        f.text_xpath_validate("//input[@id='user-name']","Cristian",1)
-        f.text_xpath_validate("//input[@id='password']","1234",2)
+      pg = Login_Page(self.driver)  
+      pg.main_process_login_page()
         
 
     def tearDown(self):

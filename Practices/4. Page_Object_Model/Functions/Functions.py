@@ -26,16 +26,28 @@ class Functions():
         val.send_keys(text)
         time.sleep(time2)
 
-    def text_xpath_validate(self,xpath,text,time2):
+    def text_xpath_validate(self,xpath,text,time2,time3):
 
         try:
-            val = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH,xpath)))
+            val = WebDriverWait(self.driver, time2).until(EC.element_to_be_clickable((By.XPATH,xpath)))
+            self.driver.execute_script("arguments[0].scrollIntoView();", val)
             val.clear()
             val.send_keys(text)
-            time.sleep(time2)
+            time.sleep(time3)
         except TimeoutException as ex:
             print(ex.msg)
             print("Element not found" + xpath)  
+
+    def text_xpath_validate_click(self,xpath,time2,time3):
+
+        try:
+            val = WebDriverWait(self.driver, time2).until(EC.element_to_be_clickable((By.XPATH,xpath)))
+            self.driver.execute_script("arguments[0].scrollIntoView();", val)
+            val.click()
+            time.sleep(time3)
+        except TimeoutException as ex:
+            print(ex.msg)
+            print("Element not found" + xpath) 
 
        
 

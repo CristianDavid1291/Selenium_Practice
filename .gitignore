@@ -2,4 +2,6 @@
 /Drivers
 *.docx
 /Practices/img
+*.pyc
+
 
