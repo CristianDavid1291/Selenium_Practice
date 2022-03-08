@@ -3,5 +3,6 @@
 *.docx
 /Practices/img
 *.pyc
+*.xlsx
 
 
