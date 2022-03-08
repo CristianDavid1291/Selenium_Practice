@@ -1,6 +1,6 @@
 import openpyxl
 
-class Excel_Functions():
+class Excel_Function():
 
     def __init__(self,driver):
         self.driver = driver

@@ -1,10 +1,10 @@
-from pyclbr import Function
 import unittest
 from selenium import webdriver
 import time
-from Excel_Functions.Exc_Functions import Excel_Functions
-from Excel_Functions.Functions import Functions
-
+#from ..Excel_Functions.Exc_Functions import Excel_Functions
+#from ..Excel_Functions.Functions import Functions
+import Excel_Functions.Exc_Functions
+import Excel_Functions.Functions
 
 
 class base_test(unittest.TestCase):
@@ -15,8 +15,9 @@ class base_test(unittest.TestCase):
          
         
     def test1(self):
-        f=Functions(self.driver)
-        excelFunction =  Excel_Functions(self.driver)
+        
+        f = Excel_Functions.Functions.Function(self.driver)
+        excelFunction = Excel_Functions.Exc_Functions.Excel_Function(self.driver)
         f.navigate(path="https://demoqa.com/text-box")
         path = ".\\Practices\\5.Excel_Practice\\Excel_Functions\\Data.xlsx"
         rows = excelFunction.getCountRow(path=path,sheetName="Hoja1")
